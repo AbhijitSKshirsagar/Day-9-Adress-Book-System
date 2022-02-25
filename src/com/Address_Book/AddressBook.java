@@ -3,23 +3,75 @@ package com.Address_Book;
 import java.util.Scanner;
 
 public class AddressBook {
-	static Scanner sc = new Scanner(System.in);
-	static String firstName, lastName, address, state, email;
-	static int zip;
-	static long phoneNumber;
-	static Contact[] personDetails = new Contact[10];
+	public static void main(String[] args) {
+		PersonContact details = new PersonContact();
+		details.operations();
+	}
+}
 
-	public static void main(String args[]) {
-
-		Contact person1 = new Contact("Raj", "Kumar", "Nagar", "MH", 35, 8620, "raj@gmail.com");
-		Contact person2 = new Contact("Shashi", "Rao", "Chowk", "TD", 98, 9736, "shashi@yahoo.com");
-		Contact person3 = new Contact("Apurva", "Mehta", "Mahal", "AP", 47, 7620, "amar@edu.com");
-		personDetails[0] = person1;
-		personDetails[1] = person2;
-		personDetails[2] = person3;
-		System.out.println("Created contact list is");
-		for (int i = 0; i < 3; i++) {
-			System.out.println(personDetails[i]);
+class PersonContact {
+	public void operations() {
+		String arrayInput[] = new String[100];
+		int numOfContactDetails = 0;
+		Scanner sc = new Scanner(System.in);
+		int i = 0, j = 1, choice;
+		System.out.println("Create a contact list");
+		System.out.println("Enter how many contact details you want to create");
+		numOfContactDetails = sc.nextInt();
+		int numOfDetails = numOfContactDetails;
+		while (numOfDetails > 0) {
+			System.out.println("For Person" + j);
+			System.out.println("Add first name");
+			arrayInput[i++] = sc.next();
+			System.out.println("Add last name");
+			arrayInput[i++] = sc.next();
+			System.out.println("Add address");
+			arrayInput[i++] = sc.next();
+			System.out.println("Add state");
+			arrayInput[i++] = sc.next();
+			System.out.println("Add zip");
+			arrayInput[i++] = sc.next();
+			System.out.println("Add phone number");
+			arrayInput[i++] = sc.next();
+			System.out.println("Add email");
+			arrayInput[i++] = sc.next();
+			numOfDetails--;
+			j++;
+		}
+		System.out.println("Enter operations you want to perform contact list");
+		System.out.println("1)Add new contacts");
+		choice = sc.nextInt();
+		switch (choice) {
+		case 1:
+			int numOfAddedContacts;
+			System.out.println("Enter how many contact details you want to add");
+			numOfAddedContacts = sc.nextInt();
+			int numOfAddedCon = numOfAddedContacts;
+			while (numOfAddedCon > 0) {
+				System.out.println("For Person" + j);
+				System.out.println("Add first name");
+				arrayInput[i++] = sc.next();
+				System.out.println("Add last name");
+				arrayInput[i++] = sc.next();
+				System.out.println("Add address");
+				arrayInput[i++] = sc.next();
+				System.out.println("Add state");
+				arrayInput[i++] = sc.next();
+				System.out.println("Add zip");
+				arrayInput[i++] = sc.next();
+				System.out.println("Add phone number");
+				arrayInput[i++] = sc.next();
+				System.out.println("Add email");
+				arrayInput[i++] = sc.next();
+				numOfAddedCon--;
+				j++;
+			}
+			System.out.println();
+			System.out.println("Contact Details are ");
+			for (i = 0; i < (numOfContactDetails + numOfAddedContacts) * 7; i++) {
+				System.out.println(arrayInput[i]);
+			}
+			break;
 		}
 	}
 }
